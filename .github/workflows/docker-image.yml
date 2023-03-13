@@ -15,7 +15,7 @@ jobs:
         id: vars
         run: |
           PKGVER=$(grep ENV Dockerfile | cut -d" " -f 3)
-          echo "tag=$PKGVER" >> $GITHUB_ENV
+          echo "PKGVER=$PKGVER" >> $GITHUB_ENV
       -
         name: Checkout
         uses: actions/checkout@v3
@@ -37,4 +37,4 @@ jobs:
           file: ./Dockerfile
           platforms: linux/amd64,linux/arm64
           push: ${{ github.event_name != 'pull_request' }}
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/syncthing-relay:${{ steps.vars.outputs.tag }},${{ secrets.DOCKERHUB_USERNAME }}/syncthing-relay:latest
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/syncthing-relay:${{ env.PKGVER }},${{ secrets.DOCKERHUB_USERNAME }}/syncthing-relay:latest
