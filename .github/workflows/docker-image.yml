@@ -15,7 +15,7 @@ jobs:
         id: vars
         run: |
           PKGVER=$(grep ENV Dockerfile | cut -d" " -f 3)
-          echo "PKGVER=$PKGVER" >> $GITHUB_ENV
+          echo "tag=$PKGVER" >> $GITHUB_ENV
       -
         name: Checkout
         uses: actions/checkout@v3
@@ -32,6 +32,8 @@ jobs:
       -
         name: Build and push
         uses: docker/build-push-action@v4
+        env:
+          PKGVER: ${{ steps.vars.outputs.tag }}
         with:
           context: .
           file: ./Dockerfile
