@@ -7,8 +7,6 @@ services:
       - "22070:22070/tcp"
     networks:
       - local
-    labels:
-      - "traefik.enable=false"
     volumes:
       - "syncthing-relay:/relaysrv"
     command: -keys /relaysrv -listen ":22067" -provided-by changeMe  
