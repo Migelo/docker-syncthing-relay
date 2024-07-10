@@ -13,9 +13,8 @@
   "platformAutomerge": true,
   "packageRules": [
     {
-      "description": "Automerge non-major updates",
-      "matchUpdateTypes": ["major", "minor", "pin", "pinDigest"],
-      "enabled": true,
+      "description": "Automerge all updates",
+      "matchUpdateTypes": ["major", "minor", "patch", "pin", "digest"],
       "automerge": true,
       "automergeType": "pr",
       "platformAutomerge": true
@@ -23,7 +22,6 @@
     {
       "matchDepTypes": ["devDependencies"],
       "matchPackagePatterns": ["lint", "prettier"],
-      "enabled": true,
       "automerge": true,
       "automergeType": "pr",
       "platformAutomerge": true
