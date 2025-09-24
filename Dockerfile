@@ -1,7 +1,7 @@
 FROM golang:alpine AS builder
 LABEL maintainer="Miha Cernetic <cernetic.miha@gmail.com>"
 
-ENV PKGVER 2.0.9
+ENV PKGVER 2.0.10
 
 # Busybox wget needs TLS support, curl is less painful to get working
 RUN apk add --no-cache ca-certificates curl && \
